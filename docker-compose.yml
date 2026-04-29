@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:18.3
+    environment:
+      POSTGRES_USER: ${DB_USER:-dev}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-dev}
+      POSTGRES_DB: ${DB_NAME:-tasks}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/
+
+volumes:
+  db_data:
+    driver: local
